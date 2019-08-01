@@ -5,6 +5,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import edu.cnm.deepdive.langton.view.TerrainView?>
 
 <GridPane
         xmlns="http://javafx.com/javafx"
@@ -14,36 +15,74 @@
 
     <columnConstraints>
         <ColumnConstraints
-                percentWidth="33.3"/>
+                percentWidth="25"/>
         <ColumnConstraints
-                percentWidth="33.4"/>
+                percentWidth="25"/>
+        <ColumnConstraints
+                percentWidth="25"/>
     </columnConstraints>
 
-    <!-- TODO Include element for custom view. -->
+    <Pane
+            id="frame"
+            GridPane.rowIndex="0"
+            GridPane.columnIndex="0"
+            GridPane.columnSpan="4"
+            GridPane.halignment="CENTER"
+            GridPane.valignment="CENTER">
+
+        <TerrainView
+                fx:id="terrainView"
+                width="600"
+                height="600"/>
+
+    </Pane>
 
     <Slider
-        fx:id="populationSize"
-        min="1"
-        max="12"
-        majorTickUnit="1"
-        minorTickCount="0"
-        snapToTicks="true"
-        showTickMarks="true"
-        showTickLabels="false"
-        blockIncrement="1"
+            fx:id="populationSize"
+            min="1"
+            max="12"
+            majorTickUnit="1"
+            minorTickCount="0"
+            snapToTicks="true"
+            showTickMarks="true"
+            showTickLabels="false"
+            blockIncrement="1"
+            GridPane.rowIndex="1"
+            GridPane.columnIndex="1"
+            GridPane.halignment="LEFT"
+            GridPane.valignment="CENTER"
+            value="1"/>
+
+    <Label
+        id="populationSizeLabel"
+        labelFor="$populationSize"
+        mnemonicParsing="true"
         GridPane.rowIndex="1"
         GridPane.columnIndex="0"
+        GridPane.halignment="RIGHT"
         GridPane.valignment="CENTER"
-        GridPane.halignment="CENTER"
-        value="1"/>
+        text="%population_label"/>
+
 
     <ToggleButton
-        fx:id="runToggle"
-        GridPane.rowIndex="1"
-        GridPane.columnIndex="1"
-        text="%start_text"
-        GridPane.halignment="CENTER"
-        GridPane.valignment="CENTER"
-    onAction="#toggleRun"/>
+            fx:id="runToggle"
+            GridPane.rowIndex="1"
+            GridPane.columnIndex="2"
+            GridPane.halignment="CENTER"
+            GridPane.valignment="CENTER"
+            text="%start_text"
+            onAction="#toggleRun"
+            styleClass="button"/>
+
+    <Button
+            fx:id="resetter"
+            GridPane.rowIndex="1"
+            GridPane.columnIndex="3"
+            GridPane.halignment="CENTER"
+            GridPane.valignment="CENTER"
+            text="%reset_text"
+            onAction="#reset"
+            styleClass="button"/>
 
 </GridPane>
+
